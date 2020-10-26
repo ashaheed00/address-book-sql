@@ -28,3 +28,8 @@ INSERT INTO address_book (first_name, last_name, address, city, state, zip, phon
    ('John','Smith','8/22 Kalyani','Kalyani','West Bengal','729558','8123400000','third@person.com'),
    ('Krishna','Pauly','8/11 Podula Road','Aluva','Kerala','826123','7894652222','fourth@person.com');
 ```
+## UC4_EditData_UsingName
+```
+UPDATE address_book set email = 'akram007@gmai.com'
+   WHERE first_name = 'Akram' AND last_name = 'Shaheed';
+```
