@@ -43,8 +43,6 @@ INSERT INTO address_book (first_name, last_name, address, city, state, zip, phon
 ## UC6_RetrievePerson_FromCityState
 ```
 SELECT * FROM address_book WHERE city = 'Aluva';
-```
-```
 SELECT * FROM address_book WHERE state = 'West Bengal';
 ```
 ## UC7_SizeBy_CityOrState
@@ -52,3 +50,11 @@ SELECT * FROM address_book WHERE state = 'West Bengal';
 SELECT city, COUNT(city) FROM address_book GROUP BY city;
 SELECT state, COUNT(state) FROM address_book GROUP BY state;
 ```
+## UC8_SortedByName_ForACity
+#### Adding this dummy person to chcek the result after sorting by name;
+```
+INSERT INTO address_book (first_name, last_name, address, city, state, zip, phone_number, email) VALUES
+   ('Dummy','Person','Berhampore','Kalyani','West Bengal','742100','9999900000','dummy@person.com');
+```
+#### Sorted by person's name for city 'Kalyani'
+```SELECT * FROM address_book WHERE city = 'Kalyani' ORDER BY first_name, last_name;```
