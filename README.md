@@ -41,7 +41,9 @@ INSERT INTO address_book (first_name, last_name, address, city, state, zip, phon
 ```
 ```DELETE FROM ADDRESS_BOOK WHERE FIRST_NAME = 'Dummy' AND LAST_NAME = 'Person';```
 ## UC6_RetrievePerson_FromCityState
-```SELECT * FROM address_book WHERE city = 'Aluva';
+```
+SELECT * FROM address_book WHERE city = 'Aluva';
 ```
 ```
-SELECT * FROM address_book WHERE state = 'West Bengal';```
+SELECT * FROM address_book WHERE state = 'West Bengal';
+```
