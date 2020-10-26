@@ -33,3 +33,10 @@ INSERT INTO address_book (first_name, last_name, address, city, state, zip, phon
 UPDATE address_book set email = 'akram007@gmai.com'
    WHERE first_name = 'Akram' AND last_name = 'Shaheed';
 ```
+## UC5_DeletePerson_UsingName
+#### Adding a dummy person and later deleting it using name
+```
+INSERT INTO address_book (first_name, last_name, address, city, state, zip, phone_number, email) VALUES
+   ('Dummy','Person','Berhampore','Kolkata','West Bengal','742100','9999900000','dummy@person.com');
+```
+```DELETE FROM ADDRESS_BOOK WHERE FIRST_NAME = 'Dummy' AND LAST_NAME = 'Person';```
