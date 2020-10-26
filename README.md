@@ -20,3 +20,11 @@ email           VARCHAR(20) NOT NULL,
 PRIMARY KEY (id)
 );
 ```
+## UC3_InsertDataInto_AddressBookTable
+```
+INSERT INTO address_book (first_name, last_name, address, city, state, zip, phone_number, email) VALUES
+   ('Akram','Shaheed','Berhampore','Kolkata','West Bengal','742100','9999900000','first@person.com'),
+   ('Aditi','Sharma','4/11 Vati Nagar','Thane','Maharashtra','625058','8888888888', 'sec@person.com'),
+   ('John','Smith','8/22 Kalyani','Kalyani','West Bengal','729558','8123400000','third@person.com'),
+   ('Krishna','Pauly','8/11 Podula Road','Aluva','Kerala','826123','7894652222','fourth@person.com');
+```
