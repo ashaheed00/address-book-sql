@@ -47,3 +47,8 @@ SELECT * FROM address_book WHERE city = 'Aluva';
 ```
 SELECT * FROM address_book WHERE state = 'West Bengal';
 ```
+## UC7_SizeBy_CityOrState
+```
+SELECT city, COUNT(city) FROM address_book GROUP BY city;
+SELECT state, COUNT(state) FROM address_book GROUP BY state;
+```
