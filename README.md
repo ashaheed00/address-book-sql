@@ -58,3 +58,22 @@ INSERT INTO address_book (first_name, last_name, address, city, state, zip, phon
 ```
 #### Sorted by person's name for city 'Kalyani'
 ```SELECT * FROM address_book WHERE city = 'Kalyani' ORDER BY first_name, last_name;```
+## UC9_Add_NameAndType
+#### Adding address book name and type
+```
+ALTER TABLE address_book ADD type VARCHAR(20) AFTER last_name;
+ALTER TABLE address_book ADD address_book_name VARCHAR(20) AFTER last_name;
+```
+#### Inserting types for each contact
+```
+UPDATE address_book SET type = 'Friend'
+   WHERE first_name IN ('Aditi', 'Dummy', 'Krishna') AND last_name IN ('Sharma', 'Person', 'Pauly');
+  
+UPDATE address_book SET type = 'Family'
+   WHERE first_name IN ('Akram') AND last_name IN ('Shaheed');
+   
+UPDATE address_book SET type = 'Office'
+   WHERE first_name IN ('John') AND last_name IN ('Smith');
+```
+#### Adding address_book_name accordingly
+```UPDATE address_book SET address_book_name = CONCAT(LOWER(type),'_book');```
