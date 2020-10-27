@@ -77,3 +77,5 @@ UPDATE address_book SET type = 'Office'
 ```
 #### Adding address_book_name accordingly
 ```UPDATE address_book SET address_book_name = CONCAT(LOWER(type),'_book');```
+## UC10_NoOfContactPerType
+```SELECT type, COUNT(id) FROM address_book GROUP BY type;```
