@@ -79,3 +79,11 @@ UPDATE address_book SET type = 'Office'
 ```UPDATE address_book SET address_book_name = CONCAT(LOWER(type),'_book');```
 ## UC10_NoOfContactPerType
 ```SELECT type, COUNT(id) FROM address_book GROUP BY type;```
+## UC11_AddContactIn_AllTypes
+```
+INSERT INTO address_book (first_name, last_name, address_book_name, type, address, city, state, zip, phone_number, email) VALUES
+   ('Dummy','Person','family_book',Family','Berhampore','Kalyani','West Bengal','742100','9999900000','dummy@person.com');
+   
+INSERT INTO address_book (first_name, last_name, address_book_name, type, address, city, state, zip, phone_number, email) VALUES
+   ('Dummy','Person','friend_book','Friend','Berhampore','Kalyani','West Bengal','742100','9999905500','dummy@person.com');
+```
