@@ -140,3 +140,23 @@ INSERT INTO contact (person_id,phone_number,email)
 ```
 #### Removing extra columns. They are already in a seperate tables
 ```ALTER TABLE address_book DROP type,address,city,state,zip,phone_number,email;```
+## UC13_CheckAllRetrieveQueries
+#### Rechecking UC6
+```
+SELECT * FROM address_book WHERE 
+	person_id IN (SELECT person_id FROM address WHERE city = 'Aluva');
+SELECT * FROM address_book WHERE 
+	person_id IN (SELECT person_id FROM address WHERE state = 'West Bengal');
+```
+#### Rechecking UC7
+```
+SELECT COUNT(person_id) FROM address_book WHERE 
+	person_id IN (SELECT person_id FROM address WHERE city = 'Kalyani');
+SELECT COUNT(person_id) FROM address_book WHERE 
+	person_id IN (SELECT person_id FROM address WHERE state = 'West Bengal');
+```
+#### Rechecking UC10
+```
+SELECT COUNT(person_id) FROM address_book WHERE 
+address_book_name IN (SELECT address_book_name FROM address_book_records WHERE type = 'Friend');
+```
