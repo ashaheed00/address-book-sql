@@ -87,3 +87,56 @@ INSERT INTO address_book (first_name, last_name, address_book_name, type, addres
 INSERT INTO address_book (first_name, last_name, address_book_name, type, address, city, state, zip, phone_number, email) VALUES
    ('Dummy','Person','friend_book','Friend','Berhampore','Kalyani','West Bengal','742100','9999905500','dummy@person.com');
 ```
+## UC12_ERDiagram_ForAdressBookServiceDB
+#### ER Diagram for ADDRESS BOOK PROBLEM
+![Screenshot](address_book_ERDiagram.png)
+#### Add seperate table for address_book_name and types
+```
+CREATE TABLE address_book_records (
+   address_book_name VARCHAR(20) NOT NULL,
+   type VARCHAR(20) NOT NULL,
+   PRIMARY KEY (address_book_name)
+);
+
+INSERT INTO address_book_records (address_book_name,type) VALUES
+   ('family_book','Family'),
+   ('friend_book','Friend'),
+   ('office_book','Office');
+```
+#### Add person_id and make it PK and address_book_name as FK
+```
+ALTER TABLE address_book ADD person_id INT NOT NULL AFTER id;
+UPDATE TABLE address_book SET person_id=ID+1000;
+DELETE FROM address_book WHERE id = 1008;
+ALTER TABLE address_book DROP id;
+ALTER TABLE address_book ADD PRIMARY KEY (person_id);
+ALTER TABLE address_book ADD FOREIGN KEY (address_book_name) REFERENCES address_book_records(address_book_name);
+```
+#### Create address table sperately and inserting data from address_book
+```
+CREATE TABLE address (
+   person_id INT NOT NULL,
+   address VARCHAR(200) ,
+   city VARCHAR(50),
+   state VARCHAR(50),
+   zip VARCHAR(6),
+   FOREIGN KEY (person_id) REFERENCES address_book(person_id)
+);
+
+INSERT INTO address (person_id,address,city,state,zip)
+   SELECT person_id,address,city,state,zip FROM address_book;
+``` 
+#### Create contact table sperately and inserting data from address_book  
+```
+CREATE TABLE contact (
+   person_id INT NOT NULL,
+   phone_number VARCHAR(10),
+   email VARCHAR(100),
+   FOREIGN KEY (person_id) REFERENCES address_book(person_id)
+);
+
+INSERT INTO contact (person_id,phone_number,email)
+   SELECT person_id,phone_number,email FROM address_book;
+```
+#### Removing extra columns. They are already in a seperate tables
+```ALTER TABLE address_book DROP type,address,city,state,zip,phone_number,email;```
